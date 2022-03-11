@@ -1,5 +1,5 @@
 package common
 
 type ICommand interface {
-	Invoke()
+	Invoke() error
 }

@@ -1,5 +1,5 @@
 package common
 
 type Setter interface {
-	Set(string) Any
+	Set(string) (Any, error)
 }

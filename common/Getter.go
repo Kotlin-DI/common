@@ -1,5 +1,5 @@
 package common
 
 type Getter interface {
-	Get(string) Any
+	Get(string) (Any, error)
 }

@@ -1,7 +1,7 @@
 package uobject
 
-import "github.com/IoC-Tools/common/types"
+import "github.com/IoC-Tools/common"
 
 type Setter interface {
-	Set(string) (types.Any, error)
+	Set(string, common.Any) error
 }

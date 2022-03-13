@@ -1,7 +1,9 @@
 package uobject
 
-import "github.com/IoC-Tools/common/types"
+import (
+	"github.com/IoC-Tools/common"
+)
 
 type Getter interface {
-	Get(string) (types.Any, error)
+	Get(string) (common.Any, error)
 }

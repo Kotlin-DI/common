@@ -1,7 +1,12 @@
 package command
 
-type CommandError struct{}
+import "fmt"
+
+type CommandError struct {
+	cause string
+}
 
 func (e CommandError) Error() string {
-	return "Command execution error."
+	return fmt.Sprintf("Command execution error: %s", e.cause)
+
 }

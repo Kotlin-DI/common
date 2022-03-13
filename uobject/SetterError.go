@@ -3,12 +3,12 @@ package uobject
 import (
 	"fmt"
 
-	"github.com/IoC-Tools/common/types"
+	"github.com/IoC-Tools/common"
 )
 
 type SetterError struct {
 	key   string
-	value types.Any
+	value common.Any
 }
 
 func (e SetterError) Error() string {

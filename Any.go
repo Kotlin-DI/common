@@ -1,3 +1,3 @@
-package types
+package common
 
 type Any interface{}

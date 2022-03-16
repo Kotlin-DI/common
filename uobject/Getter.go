@@ -4,6 +4,6 @@ import (
 	"github.com/IoC-Tools/common"
 )
 
-type Getter interface {
-	Get(string) (common.Any, error)
+type Getter[T common.Any] interface {
+	Get(string) (T, error)
 }

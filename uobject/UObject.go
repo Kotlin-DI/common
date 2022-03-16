@@ -1,6 +1,8 @@
 package uobject
 
-type UObject interface {
-	Getter
-	Setter
+import "github.com/IoC-Tools/common"
+
+type UObject[T common.Any] interface {
+	Getter[T]
+	Setter[T]
 }

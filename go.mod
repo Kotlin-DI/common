@@ -1,3 +1,3 @@
 module github.com/IoC-Tools/common
 
-go 1.17
+go 1.18

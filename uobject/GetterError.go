@@ -3,9 +3,10 @@ package uobject
 import "fmt"
 
 type GetterError struct {
-	key string
+	key   string
+	cause error
 }
 
 func (e GetterError) Error() string {
-	return fmt.Sprintf("cannot get %s filed.", e.key)
+	return fmt.Sprintf("cannot get %s filed: %s", e.key, e.cause.Error())
 }

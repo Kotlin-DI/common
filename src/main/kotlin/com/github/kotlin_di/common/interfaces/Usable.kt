@@ -1,4 +1,4 @@
-package com.kotlin_di.common.interfaces
+package com.github.kotlin_di.common.interfaces
 
 import java.io.Closeable
 

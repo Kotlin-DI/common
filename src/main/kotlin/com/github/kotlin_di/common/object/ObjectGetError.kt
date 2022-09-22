@@ -1,6 +1,6 @@
-package com.kotlin_di.common.command
+package com.github.kotlin_di.common.`object`
 
-class CommandExecutionError(
+class ObjectGetError(
     override val message: String,
     override val cause: Throwable? = null
 ) : Error(message, cause)

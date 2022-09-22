@@ -13,7 +13,7 @@ plugins {
 
 val kotlinVersion: String by project
 
-group = "com.kotlin_di"
+group = "com.github.kotlin_di"
 version = "0.0.0-SNAPSHOT"
 gitVersioning.apply {
     refs {

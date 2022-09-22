@@ -1,4 +1,4 @@
-package com.kotlin_di.common.`object`
+package com.github.kotlin_di.common.`object`
 
 import kotlin.jvm.Throws
 

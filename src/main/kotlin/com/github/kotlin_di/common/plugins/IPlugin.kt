@@ -1,4 +1,4 @@
-package com.kotlin_di.common.plugins
+package com.github.kotlin_di.common.plugins
 
 import kotlin.jvm.Throws
 

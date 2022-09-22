@@ -1,6 +1,6 @@
-package com.kotlin_di.common.plugins
+package com.github.kotlin_di.common.`object`
 
-class PluginLoadError(
+class ObjectSetError(
     override val message: String,
     override val cause: Throwable? = null
 ) : Error(message, cause)

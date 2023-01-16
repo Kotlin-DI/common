@@ -1,17 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
+val kotlinVersion: String by project
 plugins {
-    kotlin("jvm") version "1.6.21"
-    java
-    `java-library`
+    kotlin("multiplatform")
+    id("org.jetbrains.kotlin.plugin.allopen")
     `maven-publish`
-    id("org.jetbrains.kotlin.plugin.allopen") version "1.6.21"
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
-    id("org.jetbrains.dokka") version "1.6.21"
+    id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
+    id("org.jetbrains.dokka") version "1.7.20"
     id("me.qoomon.git-versioning") version "6.3.0"
 }
-
-val kotlinVersion: String by project
 
 group = "com.github.kotlin_di"
 version = "0.0.0-SNAPSHOT"
@@ -39,30 +35,47 @@ repositories {
     mavenLocal()
 }
 
-dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
-    testImplementation(platform("org.junit:junit-bom:5.9.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-}
-
 ktlint {
     disabledRules.set(setOf("no-wildcard-imports"))
 }
 
+kotlin {
+    jvm {
+        compilations.all {
+            kotlinOptions.jvmTarget = "17"
+        }
+        withJava()
+        testRuns["test"].executionTask.configure {
+            useJUnitPlatform()
+        }
+    }
+    js(IR) {
+        browser {
+            commonWebpackConfig {
+                cssSupport {
+                    enabled.set(true)
+                }
+            }
+        }
+    }
+    val hostOs = System.getProperty("os.name")
+    val isMingwX64 = hostOs.startsWith("Windows")
+    val nativeTarget = when {
+        hostOs == "Mac OS X" -> macosX64("native")
+        hostOs == "Linux" -> linuxX64("native")
+        isMingwX64 -> mingwX64("native")
+        else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
+    }
+
+
+    sourceSets {
+        val commonMain by getting
+        val jvmMain by getting
+        val nativeMain by getting
+    }
+}
+
 tasks {
-    withType<KotlinCompile> {
-        kotlinOptions {
-            freeCompilerArgs = listOf("-Xjsr305=strict", "-opt-in=kotlin.RequiresOptIn")
-            jvmTarget = "11"
-        }
-        dependsOn("ktlintFormat")
-    }
-    test {
-        useJUnitPlatform()
-        testLogging {
-            events("passed", "skipped", "failed")
-        }
-    }
 
     register<Copy>("copyGitHooks") {
         description = "Copy git hooks from scripts/git-hooks"
@@ -99,20 +112,5 @@ tasks {
 
     afterEvaluate {
         tasks["clean"].dependsOn(tasks.named("installGitHooks"))
-    }
-}
-
-java {
-    withJavadocJar()
-    withSourcesJar()
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = project.group.toString()
-            artifactId = project.name
-            from(components["java"])
-        }
     }
 }

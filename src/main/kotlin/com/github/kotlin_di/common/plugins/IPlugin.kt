@@ -1,6 +1,9 @@
 package com.github.kotlin_di.common.plugins
 
-interface IPlugin<Keys : KeyDefinition> {
+import com.github.kotlin_di.common.errors.PluginLoadError
+import kotlin.jvm.Throws
+
+interface IPlugin {
     val version: String
 
     @Throws(PluginLoadError::class)

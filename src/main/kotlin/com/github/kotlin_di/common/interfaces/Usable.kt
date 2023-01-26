@@ -1,5 +1,7 @@
 package com.github.kotlin_di.common.interfaces
 
-interface Usable {
+import java.io.Closeable
+
+interface Usable : Closeable {
     fun <R> use(block: (Usable) -> R): R
 }

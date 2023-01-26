@@ -1,4 +1,4 @@
-package com.github.kotlin_di.common.`object`
+package com.github.kotlin_di.common.errors
 
 class ObjectSetError(
     override val message: String,

@@ -1,4 +1,7 @@
-package com.github.kotlin_di.common.`object`
+package com.github.kotlin_di.common.interfaces
+
+import com.github.kotlin_di.common.errors.ObjectGetError
+import kotlin.jvm.Throws
 
 interface IObject {
     @Throws(ObjectGetError::class)

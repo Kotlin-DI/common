@@ -1,4 +1,4 @@
-package com.github.kotlin_di.common.command
+package com.github.kotlin_di.common.errors
 
 class CommandExecutionError(
     override val message: String,

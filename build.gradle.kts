@@ -3,11 +3,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm")
     id("org.jetbrains.kotlin.plugin.allopen")
+    id("org.jetbrains.dokka")
     java
     `java-library`
     `maven-publish`
     id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
-    id("org.jetbrains.dokka") version "1.7.20"
     id("me.qoomon.git-versioning") version "6.3.0"
 }
 
@@ -41,7 +41,7 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-    testImplementation(platform("org.junit:junit-bom:5.9.0"))
+    testImplementation(platform("org.junit:junit-bom:5.9.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
 

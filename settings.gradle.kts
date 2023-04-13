@@ -5,5 +5,6 @@ pluginManagement {
     plugins {
         kotlin("jvm") version kotlinVersion
         id("org.jetbrains.kotlin.plugin.allopen") version kotlinVersion
+        id("org.jetbrains.dokka") version kotlinVersion
     }
 }

@@ -7,13 +7,13 @@ plugins {
     java
     `java-library`
     `maven-publish`
-    id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
+    id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
     id("me.qoomon.git-versioning") version "6.3.0"
 }
 
 val kotlinVersion: String by project
 
-group = "com.github.kotlin_di"
+group = "com.github.kotlinDI"
 version = "0.0.0-SNAPSHOT"
 gitVersioning.apply {
     refs {
@@ -46,7 +46,7 @@ dependencies {
 }
 
 ktlint {
-    disabledRules.set(setOf("no-wildcard-imports"))
+    outputToConsole.set(true)
 }
 
 tasks {

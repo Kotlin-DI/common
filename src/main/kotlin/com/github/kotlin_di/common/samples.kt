@@ -2,10 +2,7 @@ package com.github.kotlin_di.common
 
 import com.github.kotlin_di.common.annotations.IDependency
 import com.github.kotlin_di.common.interfaces.Dependency
-import com.github.kotlin_di.common.types.Key
-import com.github.kotlin_di.common.types.None
-import com.github.kotlin_di.common.types.Option
-import com.github.kotlin_di.common.types.Some
+import com.github.kotlin_di.common.types.*
 
 /**
  * @suppress
@@ -48,6 +45,8 @@ internal fun optionSample() {
     val none: Option<Int> = None
     val nullableValue: Int? = none.getOrNull()
     assert(nullableValue == null)
+    val opt: Option<Int> =  nullableValue.toOption()
+    assert(opt == None)
 
     val res = when (some) {
         is None -> 0

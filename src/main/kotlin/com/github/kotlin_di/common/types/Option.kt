@@ -42,3 +42,10 @@ data class Some<out T : Any>(val value: T) : Option<T>
  * @see Option
  */
 object None : Option<Nothing>
+
+inline fun <reified T: Any> T?.toOption(): Option<T> {
+    return when(this) {
+        null -> None
+        else -> Some(this)
+    }
+}
